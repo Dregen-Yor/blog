@@ -7,7 +7,7 @@ useHead({
     {
       name: 'description',
       content:
-        'Welcome To My Blog Site. Get Web Development, Javascript, Typescript, NodeJs, Vue, and Nuxt, Related Articles, Tips, Learning resources and more.',
+        'Welcome To My Blog Site. Get Reinforcement learning, deep learning, Agentic AI, Related Articles, Tips, Learning resources and more.',
     },
   ],
 })
@@ -16,8 +16,8 @@ useHead({
 defineOgImageComponent('About', {
   headline: 'Greetings 👋',
   title: navbarData.homeTitle,
-  description: 'Dive into web development with me and learn Js, Ts, Vue, Nuxt, Docker, k8s',
-  link: '/riyad.jpg',
+  description: 'Dive into reinforcement learning and deep learning with me and learn Agentic AI, Related Articles, Tips, Learning resources and more.',
+  link: '/avatar.jpeg',
 })
 </script>
 

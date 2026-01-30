@@ -1,12 +1,12 @@
 export const navbarData = {
-  homeTitle: "Riyad's Blog",
+  homeTitle: "SunUpdate's Blog",
 }
 
 export const footerData = {
-  author: 'Al Asad Nur Riyad',
-  aboutAuthor: 'Hi! I am Riyad, a Tech enthusiast, problem solver and software engineer. Currently working at FieldNation LLC.',
+  author: 'Gengxin Sun',
+  aboutAuthor: 'Hi! I am Gengxin Sun, a Tech enthusiast, problem solver and software engineer. Currently studying in Shandong University',
   authorInterest:
-    "I have a fair amount of knowledge of Javascript, Typescript, VueJs, and Nuxt. If you have an interesting idea, either open source or paid let's connect.",
+    "I have a fair amount of knowledge of Reinforcement learning and deep learning. If you have an interesting idea, either open source or paid let's connect.",
   aboutTheSite:
     "This is a personal blog site built with Nuxt3, TailwindCSS, NuxtContent, Nuxt Icon. Currently it's deployed in Vercel.",
 }
@@ -14,7 +14,7 @@ export const footerData = {
 export const homePage = {
   title: 'Welcome To My Blog Site',
   description:
-    'Get Web Development, Javascript, Typescript, NodeJs, Vue, and Nuxt, Related Articles, Tips, Learning resources and more.',
+    'Get Reinforcement learning, deep learning, Related Articles, Tips, Learning resources and more.',
 }
 
 export const blogsPage = {
@@ -46,10 +46,9 @@ export const seoData = {
 }
 
 export const socialLinks = {
-  githubLink: 'https://github.com/nurRiyad',
+  githubLink: 'https://github.com/Dregen-Yor',
   linkedinLink: 'https://www.linkedin.com/in/nur-riyad/',
   twitterLink: 'https://twitter.com/qdnvubp',
-  stackoverflowLink: 'https://stackoverflow.com/users/16781395/nur-riyad',
 }
 
 export const siteMetaData = [
