@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* KaTeX block-level math: center and scale up */
+.math-display,
+div:has(> math[display='block']) {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+math[display='block'] {
+  font-size: 1.15em;
+}

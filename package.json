@@ -45,6 +45,9 @@
     "unenv": "^1.10.0"
   },
   "dependencies": {
-    "nuxt-llms": "^0.1.3"
+    "katex": "^0.16.37",
+    "nuxt-llms": "^0.1.3",
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0"
   }
 }

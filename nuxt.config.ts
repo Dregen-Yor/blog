@@ -33,6 +33,12 @@ export default defineNuxtConfig({
       viewport: 'width=device-width,initial-scale=1',
       title: seoData.title,
       titleTemplate: `%s - ${seoData.title}`,
+      link: [
+        {
+          rel: 'stylesheet',
+          href: 'https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css',
+        },
+      ],
     },
     pageTransition: { name: 'page', mode: 'out-in' },
     layoutTransition: { name: 'layout', mode: 'out-in' },
@@ -69,6 +75,14 @@ export default defineNuxtConfig({
       markdown: {
         highlight: {
           theme: 'dracula',
+        },
+        remarkPlugins: {
+          'remark-math': {},
+        },
+        rehypePlugins: {
+          'rehype-katex': {
+            output: 'mathml',
+          },
         },
       },
     },
