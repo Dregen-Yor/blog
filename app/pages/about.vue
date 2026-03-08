@@ -38,12 +38,12 @@ const socialLinks: SocialLink[] = [
     icon: 'fa:graduation-cap',
     external: true,
   },
-  {
-    name: 'LinkedIn',
-    url: 'https://www.linkedin.com/in/yourusername',
-    icon: 'fa:linkedin',
-    external: true,
-  },
+  // {
+  //   name: 'LinkedIn',
+  //   url: 'https://www.linkedin.com/in/yourusername',
+  //   icon: 'fa:linkedin',
+  //   external: true,
+  // },
   // ORCID 暂时注释，图标加载有问题
   // {
   //   name: 'ORCID',
@@ -126,15 +126,20 @@ interface Internship {
 
 const internships: Internship[] = [
   {
-    period: '2025.12 - 至今',
+    period: '2025.12 - Present',
     position: 'Research Assistant',
     company: 'HKUST Peilab',
+  },
+  {
+    period: '2024.9 - Present',
+    position: 'Research Assistant',
+    company: 'Shandong University IR Lab',
   },
 ]
 
 // ==================== Others 配置 ====================
 const others: string[] = [
-  'Arch Linux User',
+  'Arch Linux User, Competitive Program contest Lover, Leader of the Shandong University ACM Team',
 ]
 
 // 设置页面元信息
