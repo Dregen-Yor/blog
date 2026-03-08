@@ -15,7 +15,7 @@ const path = computed(() => route.fullPath.replace('/', ''))
       </div>
 
       <div class="border-t dark:border-gray-800 mt-5 text-center p-2">
-        © 2020-2024 No Right is reserved. Who cares 🤷‍♂️? It's
+        © 2025-2026 No Right is reserved. Who cares 🤷‍♂️? It's
         <a href="https://github.com/nurriyad/blog" target="_blank" rel="nofollow" class="underline">open source</a>
         anyway.
 
