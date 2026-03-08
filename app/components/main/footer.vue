@@ -16,7 +16,7 @@ const path = computed(() => route.fullPath.replace('/', ''))
 
       <div class="border-t dark:border-gray-800 mt-5 text-center p-2">
         © 2025-2026 No Right is reserved. Who cares 🤷‍♂️? It's
-        <a href="https://github.com/nurriyad/blog" target="_blank" rel="nofollow" class="underline">open source</a>
+        <a href="https://github.com/Dregen-Yor/blog" target="_blank" rel="nofollow" class="underline">open source</a>
         anyway.
 
         <a href="/rss.xml" aria-label="Website RSS Feed">

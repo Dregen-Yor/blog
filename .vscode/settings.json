@@ -5,5 +5,5 @@
     "source.fixAll.eslint": "explicit"
   },
   "tailwindCSS.files.exclude": ["**/.git/**", "**/node_modules/**", "**/.hg/**", "**/.svn/**", "**/.nuxt/**"],
-  "cSpell.words": ["cloudinary", "Namecheap", "nurriyad", "Nuxt", "spacegrotesk", "Tailwindcss", "vuex"]
+  "cSpell.words": ["cloudinary", "Namecheap", "Gengxin Sun", "Nuxt", "spacegrotesk", "Tailwindcss", "vuex"]
 }

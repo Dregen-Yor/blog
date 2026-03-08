@@ -126,7 +126,7 @@ useHead({
 // Generate OG Image
 const article = articles.value as ContentItem | null
 defineOgImageComponent('Test', {
-  headline: 'Riyads Blog 👋',
+  headline: 'Sunupdate\'s Blog 👋',
   title: article?.seo?.title || '',
   description: article?.seo?.description || '',
   link: data.value.ogImage,

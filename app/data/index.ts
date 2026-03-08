@@ -28,27 +28,27 @@ export const categoryPage = {
 }
 
 export const aboutPage = {
-  title: 'Al Asad Nur Riyad',
-  description: 'Software Engineer, Problem Solver, Web Enthusiast.',
+  title: 'Gengxin Sun',
+  description: 'Student of Shandong University, majoring in Computer Science and Technology. My research interests include Reinforcement learning and deep learning.',
   aboutMe:
-    "Hello, fellow human! I'm a software wizard who spends most of his day crafting code spells at @FieldNation in the Workplace Operation team. When I'm not crafting code, you can find me summoning solutions to problems on online judges. Just don't ask me to cast any love spells, my magic only works on machines!",
+    "Hello, fellow human! I'm a student of Shandong University, majoring in Computer Science and Technology. My research interests include Reinforcement learning and deep learning.",
 }
 
 export const seoData = {
-  title: `Riyad's Blog | Riyads Blog`,
-  ogTitle: `Let's learn Javascript, Typescript, Vue, Nuxt, & Problem Solving - Riyads Blog | Riyad's Blog`,
-  description: `Hi I am Riyad. A Software Engineer at FieldNation, with over 3.5+ years experience in software development. - Riyads Blog | Riyad's Blog`,
-  twitterDescription: `Riyad's Blog, where I play around with Nuxt, Vue, and more and showcase my blog, resources, etc - Riyads Blog | Riyad's Blog`,
+  title: `SunUpdate's Blog | SunUpdate's Blog`,
+  ogTitle: `Let's learn Javascript, Typescript, Vue, Nuxt, & Problem Solving - SunUpdate's Blog | SunUpdate's Blog`,
+  description: `Hi I am SunUpdate. A student of Shandong University, majoring in Computer Science and Technology. My research interests include Reinforcement learning and deep learning. - SunUpdate's Blog | SunUpdate's Blog`,
+  twitterDescription: `SunUpdate's Blog, where I play around with Nuxt, Vue, and more and showcase my blog, resources, etc - SunUpdate's Blog | SunUpdate's Blog`,
   image: 'https://res.cloudinary.com/dmecmyphj/image/upload/v1673548905/nuxt-blog/cover_ntgs6u.webp',
-  mySite: 'https://blog-nurriyad.vercel.app',
+  mySite: 'https://sunupdate.icu',
   twitterHandle: '@qdnvubp',
-  mailAddress: 'asadnurriyad@gmail.com',
+  mailAddress: 'gxin.sun@mail.sdu.edu.cn',
 }
 
 export const socialLinks = {
   githubLink: 'https://github.com/Dregen-Yor',
-  linkedinLink: 'https://www.linkedin.com/in/nur-riyad/',
-  twitterLink: 'https://twitter.com/qdnvubp',
+  // linkedinLink: 'https://www.linkedin.com/in/nur-riyad/',
+  // twitterLink: 'https://twitter.com/qdnvubp',
 }
 
 export const siteMetaData = [

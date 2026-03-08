@@ -50,7 +50,7 @@ export default defineNuxtConfig({
 
   site: {
     url: seoData.mySite,
-    name: 'Al Asad Nur Riyad',
+    name: 'Gengxin Sun\'s Blog',
   },
 
   typescript: {
