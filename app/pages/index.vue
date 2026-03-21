@@ -16,7 +16,8 @@ useHead({
 defineOgImageComponent('About', {
   headline: 'Greetings 👋',
   title: navbarData.homeTitle,
-  description: 'Dive into reinforcement learning and deep learning with me and learn Agentic AI, Related Articles, Tips, Learning resources and more.',
+  description:
+    'Dive into reinforcement learning and deep learning with me and learn Agentic AI, Related Articles, Tips, Learning resources and more.',
   link: '/avatar.jpeg',
 })
 </script>

@@ -70,9 +70,7 @@ interface Publication {
   githubStars?: string
 }
 
-const publications: Publication[] = [
-  
-]
+const publications: Publication[] = []
 
 // ==================== Honors and Awards 配置 ====================
 interface Honor {
@@ -84,12 +82,12 @@ interface Honor {
 const honors: Honor[] = [
   {
     date: '2025.11',
-    title: "Silver Medal",
+    title: 'Silver Medal',
     description: 'International Collegiate Programming Contest (ICPC) Regional Contest (Nanjing)',
   },
   {
     date: '2025.11',
-    title: "Silver Medal",
+    title: 'Silver Medal',
     description: 'International Collegiate Programming Contest (ICPC) Regional Contest (Wuhan)',
   },
   {
@@ -138,9 +136,7 @@ const internships: Internship[] = [
 ]
 
 // ==================== Others 配置 ====================
-const others: string[] = [
-  'Arch Linux User, Competitive Program contest Lover, Leader of the Shandong University ACM Team',
-]
+const others: string[] = ['Arch Linux User, Competitive Program contest Lover, Leader of the Shandong University ACM Team']
 
 // 设置页面元信息
 useHead({
@@ -169,8 +165,13 @@ defineOgImageComponent('About', {
         <div class="profile-box">
           <!-- 头像 -->
           <div class="author-avatar">
-            <NuxtImg :src="profile.avatar" :alt="profile.name" width="180" height="180"
-              class="avatar-img border border-gray-300 dark:border-gray-600" />
+            <NuxtImg
+              :src="profile.avatar"
+              :alt="profile.name"
+              width="180"
+              height="180"
+              class="avatar-img border border-gray-300 dark:border-gray-600"
+            />
           </div>
 
           <!-- 姓名和单位 -->
@@ -197,8 +198,11 @@ defineOgImageComponent('About', {
           <!-- 社交链接 -->
           <ul v-if="Array.isArray(socialLinks) && socialLinks.length > 0" class="social-links">
             <li v-for="link in socialLinks" :key="link.name">
-              <a :href="link.url" :target="link.external ? '_blank' : undefined"
-                class="social-link text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              <a
+                :href="link.url"
+                :target="link.external ? '_blank' : undefined"
+                class="social-link text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+              >
                 <Icon :name="link.icon" size="18" class="social-icon" />
                 <span>{{ link.name }}</span>
               </a>
@@ -212,15 +216,17 @@ defineOgImageComponent('About', {
         <article class="page-article">
           <!-- About Me 区域 -->
           <section id="about-me" class="content-section">
-            <p v-for="(paragraph, index) in aboutMe" :key="index" class="intro-text text-gray-800 dark:text-gray-200"
-              v-html="paragraph" />
+            <p
+              v-for="(paragraph, index) in aboutMe"
+              :key="index"
+              class="intro-text text-gray-800 dark:text-gray-200"
+              v-html="paragraph"
+            />
           </section>
 
           <!-- Publications 区域 -->
           <section v-if="publications.length > 0" id="publications" class="content-section">
-            <h1 class="section-title text-gray-900 dark:text-gray-100">
-              <span class="section-icon">📝</span> Publications
-            </h1>
+            <h1 class="section-title text-gray-900 dark:text-gray-100"><span class="section-icon">📝</span> Publications</h1>
 
             <div class="paper-list">
               <div v-for="(paper, index) in publications" :key="index" class="paper-item">
@@ -228,12 +234,12 @@ defineOgImageComponent('About', {
                   [{{ index + 1 }}]
                   <strong>
                     <a :href="paper.url" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline">{{
-                      paper.title }}</a>
+                      paper.title
+                    }}</a>
                     - {{ paper.venue }}
                   </strong>
                   <a v-if="paper.githubRepo" :href="paper.githubRepo" target="_blank" class="paper-badge">
-                    <img :src="`https://img.shields.io/github/stars/${paper.githubStars}?style=social`"
-                      alt="GitHub stars" />
+                    <img :src="`https://img.shields.io/github/stars/${paper.githubStars}?style=social`" alt="GitHub stars" />
                   </a>
                 </p>
                 <p class="paper-authors text-gray-600 dark:text-gray-400">
@@ -245,51 +251,45 @@ defineOgImageComponent('About', {
 
           <!-- Honors and Awards 区域 -->
           <section v-if="honors.length > 0" id="honors" class="content-section">
-            <h1 class="section-title text-gray-900 dark:text-gray-100">
-              <span class="section-icon">🎖</span> Honors and Awards
-            </h1>
+            <h1 class="section-title text-gray-900 dark:text-gray-100"><span class="section-icon">🎖</span> Honors and Awards</h1>
 
             <ul class="info-list">
               <li v-for="(honor, index) in honors" :key="index" class="text-gray-800 dark:text-gray-200">
                 <em class="text-gray-600 dark:text-gray-400">{{ honor.date }}</em>
-                <strong>{{ honor.title }}</strong>{{ honor.description ? `, ${honor.description}` : '' }}
+                <strong>{{ honor.title }}</strong
+                >{{ honor.description ? `, ${honor.description}` : '' }}
               </li>
             </ul>
           </section>
 
           <!-- Education 区域 -->
           <section v-if="education.length > 0" id="education" class="content-section">
-            <h1 class="section-title text-gray-900 dark:text-gray-100">
-              <span class="section-icon">📖</span> Education
-            </h1>
+            <h1 class="section-title text-gray-900 dark:text-gray-100"><span class="section-icon">📖</span> Education</h1>
 
             <ul class="info-list">
               <li v-for="(edu, index) in education" :key="index" class="text-gray-800 dark:text-gray-200">
-                <em class="text-gray-600 dark:text-gray-400">{{ edu.period }}</em>, {{ edu.degree }}, {{ edu.school }},
-                {{ edu.location }}{{ edu.supervisor ? `. (Supervised by ${edu.supervisor})` : '' }}
+                <em class="text-gray-600 dark:text-gray-400">{{ edu.period }}</em
+                >, {{ edu.degree }}, {{ edu.school }}, {{ edu.location
+                }}{{ edu.supervisor ? `. (Supervised by ${edu.supervisor})` : '' }}
               </li>
             </ul>
           </section>
 
           <!-- Internships 区域 -->
           <section v-if="internships.length > 0" id="internships" class="content-section">
-            <h1 class="section-title text-gray-900 dark:text-gray-100">
-              <span class="section-icon">💻</span> Internships
-            </h1>
+            <h1 class="section-title text-gray-900 dark:text-gray-100"><span class="section-icon">💻</span> Internships</h1>
 
             <ul class="info-list">
               <li v-for="(intern, index) in internships" :key="index" class="text-gray-800 dark:text-gray-200">
-                <em class="text-gray-600 dark:text-gray-400">{{ intern.period }}</em>, {{ intern.position }}, {{
-                  intern.company }}.
+                <em class="text-gray-600 dark:text-gray-400">{{ intern.period }}</em
+                >, {{ intern.position }}, {{ intern.company }}.
               </li>
             </ul>
           </section>
 
           <!-- Others 区域 -->
           <section v-if="others.length > 0" id="others" class="content-section">
-            <h1 class="section-title text-gray-900 dark:text-gray-100">
-              <span class="section-icon">💬</span> Others
-            </h1>
+            <h1 class="section-title text-gray-900 dark:text-gray-100"><span class="section-icon">💬</span> Others</h1>
 
             <ul class="info-list">
               <li v-for="(item, index) in others" :key="index" class="text-gray-800 dark:text-gray-200">

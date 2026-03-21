@@ -4,7 +4,8 @@ export const navbarData = {
 
 export const footerData = {
   author: 'Gengxin Sun',
-  aboutAuthor: 'Hi! I am Gengxin Sun, a Tech enthusiast, problem solver and software engineer. Currently studying in Shandong University',
+  aboutAuthor:
+    'Hi! I am Gengxin Sun, a Tech enthusiast, problem solver and software engineer. Currently studying in Shandong University',
   authorInterest:
     "I have a fair amount of knowledge of Reinforcement learning and deep learning. If you have an interesting idea, either open source or paid let's connect.",
   aboutTheSite:
@@ -13,8 +14,7 @@ export const footerData = {
 
 export const homePage = {
   title: 'Welcome To My Blog Site',
-  description:
-    'Get Reinforcement learning, deep learning, Related Articles, Tips, Learning resources and more.',
+  description: 'Get Reinforcement learning, deep learning, Related Articles, Tips, Learning resources and more.',
 }
 
 export const blogsPage = {
@@ -29,7 +29,8 @@ export const categoryPage = {
 
 export const aboutPage = {
   title: 'Gengxin Sun',
-  description: 'Student of Shandong University, majoring in Computer Science and Technology. My research interests include Reinforcement learning and deep learning.',
+  description:
+    'Student of Shandong University, majoring in Computer Science and Technology. My research interests include Reinforcement learning and deep learning.',
   aboutMe:
     "Hello, fellow human! I'm a student of Shandong University, majoring in Computer Science and Technology. My research interests include Reinforcement learning and deep learning.",
 }
