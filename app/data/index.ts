@@ -12,21 +12,6 @@ export const footerData = {
     "This is a personal blog site built with Nuxt3, TailwindCSS, NuxtContent, Nuxt Icon. Currently it's deployed in Vercel.",
 }
 
-export const homePage = {
-  title: 'Welcome To My Blog Site',
-  description: 'Get Reinforcement learning, deep learning, Related Articles, Tips, Learning resources and more.',
-}
-
-export const blogsPage = {
-  title: 'All Blogs',
-  description: 'Here you will find all the blog posts I have written & published on this site.',
-}
-
-export const categoryPage = {
-  title: 'Categories',
-  description: 'Blow this category is generated from all the tags are mentioned in the different blog post',
-}
-
 export const aboutPage = {
   title: 'Gengxin Sun',
   description:

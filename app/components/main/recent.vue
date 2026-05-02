@@ -1,11 +1,10 @@
 <script lang="ts" setup>
 import type { BlogPost } from '~/types/blog'
 
-// Function to parse dates in the format "1st Mar 2023"
-function parseCustomDate(dateStr: string): Date {
-  // Remove ordinal indicators (st, nd, rd, th)
-  const cleanDateStr = dateStr.replace(/(\d+)(st|nd|rd|th)/, '$1')
-  // Parse the date
+const { t } = useLang()
+
+function parseCustomDate(dateStr?: string): Date {
+  const cleanDateStr = dateStr?.replace(/(\d+)(st|nd|rd|th)/, '$1') || ''
   return new Date(cleanDateStr)
 }
 
@@ -15,6 +14,7 @@ const { data } = await useAsyncData('recent-post', () =>
     .all()
     .then((data) => {
       return data
+        .filter((article) => article.meta?.date && article.meta?.published !== false && article.meta?.draft !== true)
         .sort((a, b) => {
           const aDate = parseCustomDate(a.meta.date as string)
           const bDate = parseCustomDate(b.meta.date as string)
@@ -57,7 +57,7 @@ useHead({
   <div class="pb-10 px-4">
     <div class="flex flex-row items-center space-x-3 pt-5 pb-3">
       <Icon name="mdi:star-three-points-outline" size="2em" class="text-black dark:text-zinc-300" />
-      <h2 class="text-4xl font-semibold text-black dark:text-zinc-300">Recent Post</h2>
+      <h2 class="text-4xl font-semibold text-black dark:text-zinc-300">{{ t('recentTitle') }}</h2>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">

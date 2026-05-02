@@ -1,0 +1,387 @@
+{
+  "timestamp": "2026-05-02T16:50:53",
+  "project_root": "/home/Dregen_Yor/code/blog",
+  "workflow": "zcf:init-project incremental deep dive",
+  "project_summary": "Incremental deep dive for all previously recommended paths",
+  "deep_dive_paths": [
+    "/home/Dregen_Yor/code/blog/app/components",
+    "/home/Dregen_Yor/code/blog/app/pages",
+    "/home/Dregen_Yor/code/blog/app/composables",
+    "/home/Dregen_Yor/code/blog/content/blogs",
+    "/home/Dregen_Yor/code/blog/public/blogs-img",
+    "/home/Dregen_Yor/code/blog/server/routes"
+  ],
+  "ignore_rules": {
+    "source": "merged .gitignore and defaults",
+    "patterns": [
+      ".output",
+      ".nuxt",
+      ".data",
+      "node_modules",
+      "*.log",
+      "node_modules/**",
+      ".git/**",
+      ".github/**",
+      "dist/**",
+      "build/**",
+      ".next/**",
+      "__pycache__/**",
+      "*.lock",
+      "*.bin",
+      "*.pdf",
+      "*.mp4",
+      "*.zip",
+      "*.tar",
+      "*.gz"
+    ],
+    "top_skipped": [
+      { "path": "node_modules", "reason": "dependency/generated artifact" },
+      { "path": ".git", "reason": "vcs metadata" },
+      { "path": ".nuxt", "reason": "generated Nuxt artifact" },
+      { "path": ".output", "reason": "generated build artifact" },
+      { "path": "public image assets", "reason": "binary/static assets recorded by path only" }
+    ]
+  },
+  "scan_coverage": {
+    "estimated_total_files": 55,
+    "scanned_file_count": 55,
+    "coverage_percent": 100,
+    "covered_module_ratio": "4/4",
+    "truncated": false,
+    "notes": "已完成所有指定 deep-dive 路径的目录枚举和高信号文件读取；二进制图片按规则仅记录路径，不读取内容。"
+  },
+  "root": {
+    "documentation": "CLAUDE.md",
+    "status": "updated",
+    "mermaid_structure_diagram": "updated with app/pages/components/composables, content/blogs, server/routes, public/blogs-img substructure",
+    "important_paths": [
+      "package.json",
+      ".gitignore",
+      "nuxt.config.ts",
+      "content.config.ts",
+      "eslint.config.mjs",
+      "tailwind.config.js",
+      "tsconfig.json",
+      "app/pages/index.vue",
+      "app/pages/blogs/index.vue",
+      "app/pages/categories/index.vue",
+      "app/pages/about.vue",
+      "server/routes/rss.xml.ts"
+    ]
+  },
+  "modules": [
+    {
+      "name": "app",
+      "path": "app",
+      "language": "Vue/TypeScript",
+      "documentation": "app/CLAUDE.md",
+      "status": "updated",
+      "responsibility": "Nuxt 前端应用、页面路由、布局、组件、组合式逻辑、站点元数据与交互逻辑。",
+      "entry_paths": [
+        "app/app.vue",
+        "app/layouts/default.vue",
+        "app/pages/index.vue",
+        "nuxt.config.ts"
+      ],
+      "interface_paths": [
+        "app/pages/index.vue",
+        "app/pages/blogs/index.vue",
+        "app/pages/categories/index.vue",
+        "app/pages/about.vue",
+        "app/pages/blogs/[blog].vue",
+        "app/pages/categories/[category].vue",
+        "app/pages/[...slug].vue"
+      ],
+      "component_paths": [
+        "app/components/archive/card.vue",
+        "app/components/archive/hero.vue",
+        "app/components/blog/card.vue",
+        "app/components/blog/empty.vue",
+        "app/components/blog/Header.vue",
+        "app/components/blog/Navigation.vue",
+        "app/components/blog/ReadingProgress.vue",
+        "app/components/blog/Toc.vue",
+        "app/components/category/card.vue",
+        "app/components/category/hero.vue",
+        "app/components/category/topic.vue",
+        "app/components/content/ProseCode.vue",
+        "app/components/content/ProsePre.vue",
+        "app/components/footer/connect.vue",
+        "app/components/footer/developer.vue",
+        "app/components/footer/link.vue",
+        "app/components/footer/site.vue",
+        "app/components/logo/404.vue",
+        "app/components/logo/arrow.vue",
+        "app/components/logo/confused.vue",
+        "app/components/logo/date.vue",
+        "app/components/logo/dogpow.vue",
+        "app/components/logo/dogs.vue",
+        "app/components/logo/dog.vue",
+        "app/components/logo/name.vue",
+        "app/components/logo/tag.vue",
+        "app/components/main/footer.vue",
+        "app/components/main/header.vue",
+        "app/components/main/hero.vue",
+        "app/components/main/recent.vue",
+        "app/components/main/trending.vue",
+        "app/components/OgImage/About.vue",
+        "app/components/OgImage/Test.vue"
+      ],
+      "composable_paths": [
+        "app/composables/useBlogNavigation.ts",
+        "app/composables/useBlogSeo.ts"
+      ],
+      "data_paths": [
+        "app/data/index.ts",
+        "app/types/blog.ts",
+        "content/blogs/*.md"
+      ],
+      "test_paths": [],
+      "important_paths": [
+        "app/utils/helper.ts",
+        "tailwind.config.js",
+        "eslint.config.mjs",
+        "package.json"
+      ],
+      "deep_dive_findings": [
+        "/blogs 使用 Fuse.js 搜索 title/description，并以 5 条/页分页。",
+        "/categories 聚合 content meta.tags 到 Map 后渲染 CategoryCard。",
+        "/about 在页面内维护 profile/social/publication/honor/education/internship 等结构化数据。",
+        "useBlogNavigation 基于 queryCollection('content').all() 计算前后文章。",
+        "useBlogSeo 统一设置博客详情页 head、OG 和 Twitter meta。"
+      ],
+      "coverage": {
+        "scanned": 46,
+        "estimated": 46,
+        "percent": 100,
+        "gaps": [
+          "未发现专用测试目录",
+          "未扫描 app/data/index.ts 和 app/types/blog.ts 的完整当前版本"
+        ]
+      },
+      "quality_risks": [
+        "/blogs 搜索词变化未重置 pageNumber，可能出现空页。",
+        "/blogs 无结果时 totalPage 为 0，UI 可能显示 1 / 0。",
+        "/categories 对 meta.tags 的运行时类型缺少 Array 校验。",
+        "about.vue 使用 v-html，未来若接外部内容需消毒。",
+        "useBlogSeo 中 description meta 重复。",
+        "个人信息分散在 app/data/index.ts 与 about.vue。"
+      ]
+    },
+    {
+      "name": "content",
+      "path": "content",
+      "language": "Markdown/YAML frontmatter",
+      "documentation": "content/CLAUDE.md",
+      "status": "updated",
+      "responsibility": "Markdown 博客文章与 Nuxt Content 数据源。",
+      "entry_paths": [
+        "content.config.ts",
+        "content/blogs/*.md"
+      ],
+      "interface_paths": [
+        "content.config.ts",
+        "content/blogs/*.md"
+      ],
+      "data_paths": [
+        "content/blogs/1. transformer复习笔记.md",
+        "content/blogs/2. PPO学习笔记.md",
+        "content/blogs/3. 记录一下我的 zsh 配置.md",
+        "content/blogs/4. Agent 相关的折腾记录（持续更新）.md",
+        "content/blogs/5. OpenMP 学习笔记.md"
+      ],
+      "test_paths": [],
+      "article_inventory": [
+        {
+          "path": "content/blogs/1. transformer复习笔记.md",
+          "title": "transformer 复习笔记",
+          "date": "30st Jan 2026",
+          "tags": ["deep-learning", "学习笔记"],
+          "images": ["/blogs-img/blog1.jpg", "transformer/transformer.png", "transformer/attention.png", "transformer/MHA.png"],
+          "published": true
+        },
+        {
+          "path": "content/blogs/2. PPO学习笔记.md",
+          "title": "零基础速通 PPO 学习笔记",
+          "date": "8 Mar 2026",
+          "tags": ["Reinforcement learning", "学习笔记"],
+          "images": ["/blogs-img/blog2.jpg"],
+          "published": true
+        },
+        {
+          "path": "content/blogs/3. 记录一下我的 zsh 配置.md",
+          "title": "记录一下我的 zsh 配置",
+          "date": "28 April 2026",
+          "tags": ["Linux", "折腾笔记"],
+          "images": ["/blogs-img/blog3.jpg", "zsh/git.png", "zsh/fastfetch.png", "zsh/onefetch.png"],
+          "published": true
+        },
+        {
+          "path": "content/blogs/4. Agent 相关的折腾记录（持续更新）.md",
+          "title": "Agent 相关的折腾记录（持续更新）",
+          "date": "30 April 2026",
+          "tags": ["Agent", "折腾笔记", "worlflow", "MCP", "Skills", "harness"],
+          "images": ["/blogs-img/blog4.jpg"],
+          "published": true
+        },
+        {
+          "path": "content/blogs/5. OpenMP 学习笔记.md",
+          "title": "OpenMP 学习笔记",
+          "date": "1 May 2026",
+          "tags": ["Linux", "并行计算"],
+          "images": ["/blogs-img/blog4.jpg"],
+          "published": true
+        }
+      ],
+      "coverage": {
+        "scanned": 5,
+        "estimated": 5,
+        "percent": 100,
+        "gaps": [
+          "未进行自动 Markdown 链接和图片引用存在性检查",
+          "未发现内容 schema 校验测试"
+        ]
+      },
+      "quality_risks": [
+        "transformer 文章日期 30st Jan 2026 疑似拼写/格式问题。",
+        "标签 worlflow 疑似 workflow 拼写错误。",
+        "Agent 与 OpenMP 文章共用 /blogs-img/blog4.jpg，需确认是否为占位。",
+        "自然语言日期依赖 JS Date 解析。",
+        "正文相对图片 transformer/*.png 和 zsh/*.png 的最终访问路径需验证。"
+      ]
+    },
+    {
+      "name": "server",
+      "path": "server",
+      "language": "TypeScript",
+      "documentation": "server/CLAUDE.md",
+      "status": "updated",
+      "responsibility": "Nuxt/Nitro 服务端路由，当前负责 RSS XML。",
+      "entry_paths": ["server/routes/rss.xml.ts"],
+      "interface_paths": ["server/routes/rss.xml.ts"],
+      "data_paths": ["content/blogs/*.md"],
+      "test_paths": [],
+      "important_paths": ["nuxt.config.ts", "app/data/index.ts", "public/favicon.ico"],
+      "deep_dive_findings": [
+        "RSS route 设置 content-type 为 text/xml。",
+        "使用 feed 包构造 RSS 2.0。",
+        "basePath 硬编码为 https://sunupdate.icu。",
+        "每个 content 文档直接映射为 feed item，date 使用 new Date(doc.meta?.date)。"
+      ],
+      "coverage": {
+        "scanned": 1,
+        "estimated": 1,
+        "percent": 100,
+        "gaps": [
+          "未发现服务端测试",
+          "未验证 RSS 日期解析异常场景",
+          "未验证 published false 过滤策略"
+        ]
+      },
+      "quality_risks": [
+        "RSS 未显式过滤草稿。",
+        "RSS item 未显式排序。",
+        "basePath 与站点配置重复维护。",
+        "content 仅使用 description，不包含正文。"
+      ]
+    },
+    {
+      "name": "public",
+      "path": "public",
+      "language": "Static assets",
+      "documentation": "public/CLAUDE.md",
+      "status": "updated",
+      "responsibility": "公开静态资源、头像、favicon、博客图片与文章内图片。",
+      "entry_paths": ["public/**", "public/blogs-img/**"],
+      "interface_paths": ["public/**"],
+      "data_paths": ["public/**"],
+      "test_paths": [],
+      "asset_inventory": [
+        "public/android-chrome-192x192.png",
+        "public/android-chrome-512x512.png",
+        "public/apple-touch-icon.png",
+        "public/avatar.jpeg",
+        "public/blogs-img/blog1.jpg",
+        "public/blogs-img/blog2.jpg",
+        "public/blogs-img/blog3.jpg",
+        "public/blogs-img/blog4.jpg",
+        "public/blogs-img/blog5.jpg",
+        "public/blogs-img/blog6.jpg",
+        "public/blogs-img/blog7.png",
+        "public/blogs-img/blog8.png",
+        "public/blogs-img/blog.jpg",
+        "public/favicon-16x16.png",
+        "public/favicon-32x32.png",
+        "public/favicon.ico",
+        "public/not-found.jpg",
+        "public/transformer/attention.png",
+        "public/transformer/MHA.png",
+        "public/transformer/transformer.png",
+        "public/zsh/fastfetch.png",
+        "public/zsh/git.png",
+        "public/zsh/onefetch.png"
+      ],
+      "coverage": {
+        "scanned": 23,
+        "estimated": 23,
+        "percent": 100,
+        "gaps": [
+          "二进制图片按规则未读取内容",
+          "未自动验证 Markdown/frontmatter 图片引用是否存在"
+        ]
+      },
+      "quality_risks": [
+        "需检查未引用图片和重复封面。",
+        "需确认正文相对图片 transformer/*.png 和 zsh/*.png 的最终渲染路径。"
+      ]
+    }
+  ],
+  "module_candidates": [
+    {
+      "path": ".",
+      "language": "TypeScript/Vue",
+      "entry_file_guesses": ["nuxt.config.ts", "app/app.vue"],
+      "test_directory_exists": false,
+      "config_file_exists": true
+    },
+    {
+      "path": "app",
+      "language": "Vue/TypeScript",
+      "entry_file_guesses": ["app/app.vue", "app/pages/index.vue"],
+      "test_directory_exists": false,
+      "config_file_exists": false
+    },
+    {
+      "path": "content",
+      "language": "Markdown",
+      "entry_file_guesses": ["content.config.ts"],
+      "test_directory_exists": false,
+      "config_file_exists": true
+    },
+    {
+      "path": "server",
+      "language": "TypeScript",
+      "entry_file_guesses": ["server/routes/rss.xml.ts"],
+      "test_directory_exists": false,
+      "config_file_exists": false
+    },
+    {
+      "path": "public",
+      "language": "Static assets",
+      "entry_file_guesses": ["public/**"],
+      "test_directory_exists": false,
+      "config_file_exists": false
+    }
+  ],
+  "gaps": [
+    "缺少测试体系：未发现 Vitest/Playwright/Cypress 或 tests 目录。",
+    "缺少内容质量自动化：frontmatter、图片引用、日期格式未自动校验。",
+    "未完整复扫 app/data/index.ts、app/types/blog.ts、nuxt.config.ts、content.config.ts 的配置一致性。"
+  ],
+  "recommended_next_deep_dive_paths": [
+    "app/data/index.ts and app/types/blog.ts current full scan",
+    "nuxt.config.ts and content.config.ts config consistency re-check",
+    "content/blogs link/image/date validation automation",
+    "component-level responsibility map for app/components"
+  ]
+}

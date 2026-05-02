@@ -14,6 +14,7 @@ import { footerData, socialLinks } from '~/data'
       <NuxtLink
         :to="socialLinks.githubLink"
         target="_blank"
+        rel="noopener noreferrer"
         class="p-2 bg-gray-300 text-gray-800 rounded-md dark:bg-sky-700 dark:text-[#F1F2F4]"
         aria-label="Github"
       >
@@ -22,6 +23,7 @@ import { footerData, socialLinks } from '~/data'
       <NuxtLink
         :to="socialLinks.linkedinLink"
         target="_blank"
+        rel="noopener noreferrer"
         class="p-2 bg-gray-300 text-gray-800 rounded-md dark:bg-sky-700 dark:text-[#F1F2F4]"
         aria-label="LinkedIn"
       >
@@ -30,6 +32,7 @@ import { footerData, socialLinks } from '~/data'
       <NuxtLink
         :to="socialLinks.twitterLink"
         target="_blank"
+        rel="noopener noreferrer"
         class="p-2 bg-gray-300 text-gray-800 rounded-md dark:bg-sky-700 dark:text-[#F1F2F4]"
         aria-label="Twitter"
       >
@@ -38,6 +41,7 @@ import { footerData, socialLinks } from '~/data'
       <NuxtLink
         :to="socialLinks.stackoverflowLink"
         target="_blank"
+        rel="noopener noreferrer"
         class="p-2 bg-gray-300 text-gray-800 rounded-md dark:bg-sky-700 dark:text-[#F1F2F4]"
         aria-label="StackOverflow"
       >

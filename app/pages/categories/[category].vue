@@ -16,10 +16,13 @@ const { data } = await useAsyncData(`category-data-${category.value}`, () =>
   queryCollection('content')
     .all()
     .then((articles) =>
-      articles.filter((article) => {
-        const meta = article.meta as unknown as BlogPost
-        return meta.tags.includes(category.value)
-      }),
+      articles
+        .filter((a) => a.meta?.published !== false && a.meta?.draft !== true)
+        .filter((article) => {
+          const meta = article.meta as unknown as BlogPost
+          const tags = Array.isArray(meta.tags) ? meta.tags : []
+          return tags.includes(category.value)
+        }),
     ),
 )
 
@@ -62,7 +65,7 @@ defineOgImage({
 </script>
 
 <template>
-  <main class="container max-w-5xl mx-auto text-zinc-600 px-4">
+  <div class="container max-w-5xl mx-auto text-zinc-600 px-4">
     <CategoryTopic />
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       <BlogCard
@@ -80,5 +83,5 @@ defineOgImage({
       />
       <BlogEmpty v-if="data?.length === 0" />
     </div>
-  </main>
+  </div>
 </template>

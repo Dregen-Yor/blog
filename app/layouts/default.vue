@@ -1,9 +1,14 @@
+<script setup lang="ts">
+const { t } = useLang()
+</script>
+
 <template>
   <div class="gd-container font-spacegrotesk">
+    <a href="#main" class="skip-link">{{ t('skipToMain') }}</a>
     <header class="fixed w-full bg-[#F1F2F4] dark:bg-slate-950 z-10">
       <MainHeader />
     </header>
-    <main>
+    <main id="main" tabindex="-1">
       <div class="p-9" />
       <slot />
     </main>

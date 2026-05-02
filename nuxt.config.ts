@@ -29,7 +29,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      charset: 'utf-16',
+      charset: 'utf-8',
       viewport: 'width=device-width,initial-scale=1',
       title: seoData.title,
       titleTemplate: `%s - ${seoData.title}`,

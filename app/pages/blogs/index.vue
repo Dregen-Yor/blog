@@ -2,11 +2,17 @@
 import Fuse from 'fuse.js'
 import type { BlogPost } from '~/types/blog'
 
-const { data } = await useAsyncData('all-blog-post', () => queryCollection('content').all())
+const { t } = useLang()
+
+const { data } = await useAsyncData('all-blog-post', () =>
+  queryCollection('content')
+    .all()
+    .then((articles) => articles.filter((a) => a.meta?.published !== false && a.meta?.draft !== true)),
+)
 
 const elementPerPage = ref(5)
 const pageNumber = ref(1)
-const searchTest = ref('')
+const searchText = ref('')
 
 const formattedData = computed(() => {
   return (
@@ -36,11 +42,11 @@ const fuse = computed(() => {
 })
 
 const searchData = computed(() => {
-  if (!searchTest.value.trim()) {
+  if (!searchText.value.trim()) {
     return formattedData.value
   }
 
-  const results = fuse.value.search(searchTest.value)
+  const results = fuse.value.search(searchText.value)
   return results.map((result) => result.item)
 })
 
@@ -57,7 +63,22 @@ function onPreviousPageClick() {
 
 const totalPage = computed(() => {
   const ttlContent = searchData.value.length || 0
-  return Math.ceil(ttlContent / elementPerPage.value)
+  return Math.max(1, Math.ceil(ttlContent / elementPerPage.value))
+})
+
+const resultSummary = computed(() => {
+  const count = searchData.value.length
+  if (searchText.value.trim()) return t('searchResultsCount', count)
+  return t('postsCount', count)
+})
+
+function clearSearch() {
+  searchText.value = ''
+  pageNumber.value = 1
+}
+
+watch(searchText, () => {
+  pageNumber.value = 1
 })
 
 function onNextPageClick() {
@@ -65,11 +86,11 @@ function onNextPageClick() {
 }
 
 useHead({
-  title: 'Archive',
+  title: t('blogsTitle'),
   meta: [
     {
       name: 'description',
-      content: 'Here you will find all the blog posts I have written & published on this site.',
+      content: t('blogsDescription'),
     },
   ],
 })
@@ -78,24 +99,39 @@ useHead({
 const siteData = useSiteConfig()
 defineOgImage({
   props: {
-    title: 'Archive',
-    description: 'Here you will find all the blog posts I have written & published on this site.',
+    title: t('blogsTitle'),
+    description: t('blogsDescription'),
     siteName: siteData.url,
   },
 })
 </script>
 
 <template>
-  <main class="container max-w-5xl mx-auto text-zinc-600">
+  <div class="container max-w-5xl mx-auto text-zinc-600">
     <ArchiveHero />
 
-    <div class="px-6">
-      <input
-        v-model="searchTest"
-        placeholder="Search"
-        type="text"
-        class="block w-full bg-[#F1F2F4] dark:bg-slate-900 dark:placeholder-zinc-500 text-zinc-300 rounded-md border-gray-300 dark:border-gray-800 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-      />
+    <div class="px-6 space-y-3">
+      <label for="archive-search" class="block text-sm font-semibold text-zinc-700 dark:text-zinc-200">
+        {{ t('searchLabel') }}
+      </label>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <input
+          id="archive-search"
+          v-model="searchText"
+          :placeholder="t('searchPlaceholder')"
+          type="search"
+          class="block w-full bg-[#F1F2F4] dark:bg-slate-900 dark:placeholder-zinc-500 text-zinc-900 dark:text-zinc-100 rounded-md border-gray-300 dark:border-gray-800 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+        />
+        <button
+          v-if="searchText"
+          type="button"
+          class="rounded-md border border-gray-300 dark:border-gray-700 px-4 py-2 text-sm font-semibold text-zinc-700 dark:text-zinc-200 hover:bg-white dark:hover:bg-slate-900 transition-colors"
+          @click="clearSearch"
+        >
+          {{ t('clearButton') }}
+        </button>
+      </div>
+      <p class="text-sm text-zinc-600 dark:text-zinc-400">{{ resultSummary }}</p>
     </div>
 
     <div v-auto-animate class="space-y-5 my-5 px-4">
@@ -113,17 +149,17 @@ defineOgImage({
         />
       </template>
 
-      <ArchiveCard v-if="paginatedData.length <= 0" title="No Post Found" image="/not-found.jpg" />
+      <ArchiveCard v-if="paginatedData.length <= 0" :title="t('noPostsFound')" image="/not-found.jpg" />
     </div>
 
-    <div class="flex justify-center items-center space-x-6">
-      <button :disabled="pageNumber <= 1" @click="onPreviousPageClick">
+    <div v-if="searchData.length > 0" class="flex justify-center items-center space-x-6">
+      <button type="button" :disabled="pageNumber <= 1" :aria-label="t('prevPage')" @click="onPreviousPageClick">
         <Icon name="mdi:code-less-than" size="30" :class="{ 'text-sky-700 dark:text-sky-400': pageNumber > 1 }" />
       </button>
       <p>{{ pageNumber }} / {{ totalPage }}</p>
-      <button :disabled="pageNumber >= totalPage" @click="onNextPageClick">
+      <button type="button" :disabled="pageNumber >= totalPage" :aria-label="t('nextPage')" @click="onNextPageClick">
         <Icon name="mdi:code-greater-than" size="30" :class="{ 'text-sky-700 dark:text-sky-400': pageNumber < totalPage }" />
       </button>
     </div>
-  </main>
+  </div>
 </template>

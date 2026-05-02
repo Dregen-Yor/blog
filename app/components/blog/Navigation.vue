@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { t } = useLang()
+
 interface NavigationPost {
   path: string
   title: string
@@ -25,7 +27,7 @@ defineProps<Props>()
         class="text-sky-600 dark:text-sky-400 group-hover:-translate-x-1 transition-transform duration-300 flex-shrink-0"
       />
       <div class="flex-1 min-w-0">
-        <p class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide mb-1">Previous</p>
+        <p class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide mb-1">{{ t('previous') }}</p>
         <p
           class="text-sm font-semibold text-zinc-700 dark:text-zinc-300 group-hover:text-sky-600 dark:group-hover:text-sky-400 line-clamp-2 transition-colors duration-300"
         >
@@ -43,7 +45,7 @@ defineProps<Props>()
       :class="{ 'md:col-start-2': !previousPost }"
     >
       <div class="flex-1 text-right min-w-0">
-        <p class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide mb-1">Next</p>
+        <p class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide mb-1">{{ t('next') }}</p>
         <p
           class="text-sm font-semibold text-zinc-700 dark:text-zinc-300 group-hover:text-sky-600 dark:group-hover:text-sky-400 line-clamp-2 transition-colors duration-300"
         >

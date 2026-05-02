@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+const { t } = useLang()
+
 interface Props {
   path?: string
   title?: string
@@ -57,7 +59,7 @@ withDefaults(defineProps<Props>(), {
           {{ description }}
         </p>
         <div class="flex group-hover:underline text-sky-700 dark:text-sky-400 items-center py-2">
-          <p>Read More</p>
+          <p>{{ t('readMore') }}</p>
           <LogoArrow />
         </div>
       </div>

@@ -6,6 +6,8 @@ function onClick(val: string) {
   colorMode.preference = val
 }
 
+const { lang, toggleLang, t } = useLang()
+
 const route = useRoute()
 function isActive(path: string) {
   return route.path.startsWith(path)
@@ -24,13 +26,13 @@ function isActive(path: string) {
       </ul>
       <ul class="flex items-center space-x-3 sm:space-x-6 text-sm sm:text-lg">
         <li>
-          <NuxtLink to="/blogs" :class="{ underline: isActive('/blogs') }"> Blogs </NuxtLink>
+          <NuxtLink to="/blogs" :class="{ underline: isActive('/blogs') }">{{ t('navArchive') }}</NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/categories" :class="{ underline: isActive('/categories') }"> Categories </NuxtLink>
+          <NuxtLink to="/categories" :class="{ underline: isActive('/categories') }">{{ t('navCategories') }}</NuxtLink>
         </li>
-        <li title="About Me">
-          <NuxtLink to="/about" aria-label="About me" :class="{ underline: $route.path === '/about' }"> About </NuxtLink>
+        <li>
+          <NuxtLink to="/about" :aria-label="t('navAbout')" :class="{ underline: $route.path === '/about' }">{{ t('navAbout') }}</NuxtLink>
         </li>
         <li class="flex items-center">
           <ClientOnly>
@@ -40,8 +42,10 @@ function isActive(path: string) {
                   v-if="colorMode.value === 'light'"
                   key="light-mode"
                   name="light-mode"
-                  title="Light"
-                  class="absolute inset-0 flex items-center justify-center hover:scale-110 transition-all ease-out hover:cursor-pointer"
+                  type="button"
+                  :title="t('switchToDark')"
+                  :aria-label="t('switchToDark')"
+                  class="absolute inset-0 flex items-center justify-center hover:scale-110 transition-transform ease-out hover:cursor-pointer"
                   @click="onClick('dark')"
                 >
                   <Icon name="icon-park:moon" size="20" />
@@ -50,8 +54,10 @@ function isActive(path: string) {
                   v-else
                   key="dark-mode"
                   name="dark-mode"
-                  title="Dark"
-                  class="absolute inset-0 flex items-center justify-center hover:scale-110 transition-all ease-out hover:cursor-pointer"
+                  type="button"
+                  :title="t('switchToLight')"
+                  :aria-label="t('switchToLight')"
+                  class="absolute inset-0 flex items-center justify-center hover:scale-110 transition-transform ease-out hover:cursor-pointer"
                   @click="onClick('light')"
                 >
                   <Icon name="noto:sun" size="20" />
@@ -64,6 +70,16 @@ function isActive(path: string) {
             </template>
           </ClientOnly>
         </li>
+        <li class="flex items-center">
+          <button
+            type="button"
+            class="text-xs sm:text-sm font-bold px-2 py-1 rounded border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors"
+            :aria-label="lang === 'zh' ? 'Switch to English' : '切换到中文'"
+            @click="toggleLang"
+          >
+            {{ lang === 'zh' ? 'EN' : '中' }}
+          </button>
+        </li>
       </ul>
     </div>
   </div>
@@ -72,7 +88,9 @@ function isActive(path: string) {
 <style scoped>
 .icon-fade-enter-active,
 .icon-fade-leave-active {
-  transition: all 0.3s ease-in-out;
+  transition:
+    opacity 0.3s ease-in-out,
+    transform 0.3s ease-in-out;
 }
 
 .icon-fade-enter-from {

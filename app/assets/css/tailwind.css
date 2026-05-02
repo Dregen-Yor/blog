@@ -2,6 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :focus-visible {
+    outline: 2px solid rgb(14 165 233);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .skip-link {
+    position: fixed;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 100;
+    transform: translateY(-150%);
+    border-radius: 9999px;
+    background: rgb(24 24 27);
+    color: white;
+    padding: 0.5rem 1rem;
+    transition: transform 150ms ease;
+  }
+
+  .skip-link:focus-visible {
+    transform: translateY(0);
+  }
+}
+
 /* KaTeX block-level math: center and scale up */
 .math-display,
 div:has(> math[display='block']) {
