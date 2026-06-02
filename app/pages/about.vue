@@ -9,6 +9,8 @@ const profile = {
   avatar: 'avatar.jpeg',
   bio: 'I am a student of Shandong University, majoring in Computer Science and Technology. My research interests include Reinforcement learning and deep learning.',
   location: 'Qingdao, Shandong',
+  motto: 'To boldly go where no one has gone before.',
+  mottoCn: '勇踏前人未至之境。',
 }
 
 // ==================== 社交链接配置 ====================
@@ -188,6 +190,12 @@ defineOgImageComponent('About', {
           <div class="author-bio">
             <p class="text-gray-700 dark:text-gray-300">{{ profile.bio }}</p>
           </div>
+
+          <!-- 座右铭 -->
+          <blockquote v-if="profile.motto" class="author-motto text-gray-700 dark:text-gray-300">
+            <p class="motto-en">{{ profile.motto }}</p>
+            <p v-if="profile.mottoCn" class="motto-cn text-gray-500 dark:text-gray-400">{{ profile.mottoCn }}</p>
+          </blockquote>
 
           <!-- 位置信息 -->
           <div class="author-location text-gray-600 dark:text-gray-400">
@@ -373,6 +381,33 @@ defineOgImageComponent('About', {
   font-size: 0.9rem;
   line-height: 1.6;
   margin: 0;
+}
+
+/* 座右铭 */
+.author-motto {
+  margin: 16px 0;
+  padding-left: 12px;
+  border-left: 3px solid #d1d5db;
+  text-align: left;
+}
+
+html.dark .author-motto {
+  border-left-color: #4b5563;
+}
+
+.author-motto p {
+  margin: 0;
+}
+
+.motto-en {
+  font-size: 0.9rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.motto-cn {
+  font-size: 0.85rem;
+  margin-top: 4px;
 }
 
 /* 位置信息 */
