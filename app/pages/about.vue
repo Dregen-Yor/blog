@@ -58,8 +58,8 @@ const socialLinks: SocialLink[] = [
 // ==================== About Me 内容配置 ====================
 // 支持 HTML 标签
 const aboutMe: string[] = [
-  `Hi there! I am a student of Shandong University, majoring in Computer Science and Technology. My research interests include Reinforcement learning and deep learning.`,
-  'Feel free to reach out if you have any questions or would like to collaborate!',
+  `Hi there! I am a student of Shandong University, majoring in Computer Science and Technology. My research interests include Agentic Reinforcement learning and deep learning.`,
+  'Although I’m still at the beginning of my academic journey, I’m eager to explore more opportunities for collaboration across academia and industry, and I’d love to connect with more like-minded people. Feel free to reach out if you have any questions or would like to collaborate!',
 ]
 
 // ==================== Publications 配置 ====================
