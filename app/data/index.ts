@@ -7,7 +7,7 @@ export const footerData = {
   aboutAuthor:
     'Hi! I am Gengxin Sun, a Tech enthusiast, problem solver and software engineer. Currently studying in Shandong University',
   authorInterest:
-    "I have a fair amount of knowledge of Reinforcement learning and deep learning. If you have an interesting idea, either open source or paid let's connect.",
+    "Although I’m still at the beginning of my academic journey, I’m eager to explore more opportunities for collaboration across academia and industry, and I’d love to connect with more like-minded people. Feel free to reach out if you have any questions or would like to collaborate!",
   aboutTheSite:
     "This is a personal blog site built with Nuxt3, TailwindCSS, NuxtContent, Nuxt Icon. Currently it's deployed in Vercel.",
 }

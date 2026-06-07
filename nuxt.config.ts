@@ -36,6 +36,10 @@ export default defineNuxtConfig({
       link: [
         {
           rel: 'stylesheet',
+          href: 'https://registry.npmmirror.com/@fontsource/space-grotesk/5.2.5/files/latin-400.css',
+        },
+        {
+          rel: 'stylesheet',
           href: 'https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css',
         },
       ],
@@ -68,6 +72,13 @@ export default defineNuxtConfig({
     classSuffix: '',
     preference: 'dark',
     fallback: 'light',
+  },
+
+  fonts: {
+    providers: {
+      google: false,
+    },
+    families: [{ name: 'Space Grotesk', provider: 'none' }],
   },
 
   content: {
