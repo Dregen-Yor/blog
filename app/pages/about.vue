@@ -10,7 +10,6 @@ const profile = {
   bio: 'I am a student of Shandong University, majoring in Computer Science and Technology. My research interests include Reinforcement learning and deep learning.',
   location: 'Qingdao, Shandong',
   motto: 'To boldly go where no one has gone before.',
-  mottoCn: '勇踏前人未至之境。',
 }
 
 // ==================== 社交链接配置 ====================
@@ -193,8 +192,7 @@ defineOgImageComponent('About', {
 
           <!-- 座右铭 -->
           <blockquote v-if="profile.motto" class="author-motto text-gray-700 dark:text-gray-300">
-            <p class="motto-en">{{ profile.motto }}</p>
-            <p v-if="profile.mottoCn" class="motto-cn text-gray-500 dark:text-gray-400">{{ profile.mottoCn }}</p>
+            <p>{{ profile.motto }}</p>
           </blockquote>
 
           <!-- 位置信息 -->
@@ -397,17 +395,9 @@ html.dark .author-motto {
 
 .author-motto p {
   margin: 0;
-}
-
-.motto-en {
   font-size: 0.9rem;
   font-style: italic;
   line-height: 1.5;
-}
-
-.motto-cn {
-  font-size: 0.85rem;
-  margin-top: 4px;
 }
 
 /* 位置信息 */

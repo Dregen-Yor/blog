@@ -11,6 +11,7 @@ const messages = {
   switchToLight: { zh: '切换到浅色主题', en: 'Switch to light theme' },
   skipToMain: { zh: '跳到主要内容', en: 'Skip to main content' },
   homeTitle: { zh: '欢迎来到我的博客', en: 'Welcome To My Blog' },
+  motto: { zh: '勇踏前人未至之境。', en: 'To boldly go where no one has gone before.' },
   homeDescription: { zh: '这里记录强化学习、深度学习、Agent、Linux 折腾和并行计算相关内容。', en: 'Notes on RL, Deep Learning, Agent, Linux and Parallel Computing.' },
   primaryCta: { zh: '阅读文章', en: 'Read posts' },
   secondaryCta: { zh: '浏览分类', en: 'Browse categories' },

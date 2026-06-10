@@ -10,8 +10,7 @@ const { t } = useLang()
           {{ t('homeTitle') }}
         </h1>
         <blockquote class="hero-motto border-l-4 border-sky-700 dark:border-sky-400 pl-3 my-4">
-          <p class="italic text-zinc-700 dark:text-zinc-300">To boldly go where no one has gone before.</p>
-          <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">勇踏前人未至之境。</p>
+          <p class="italic text-zinc-700 dark:text-zinc-300">{{ t('motto') }}</p>
         </blockquote>
         <p class="dark:text-zinc-300 max-w-prose">
           {{ t('homeDescription') }}
