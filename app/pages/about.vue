@@ -71,7 +71,14 @@ interface Publication {
   githubStars?: string
 }
 
-const publications: Publication[] = []
+const publications: Publication[] = [
+  {
+    title: 'Do Generative Recommenders Deepen the Information Cocoon? A Closed-Loop Simulation with LLM-powered User Simulators',
+    url: 'https://arxiv.org/abs/2606.17707',
+    venue: 'arXiv preprint arXiv:2606.17707, 2026',
+    authors: 'Jiyuan Yang, <strong>Gengxin Sun</strong>, Mengqi Zhang, Lingjie Wang, Yuanzi Li, Hongxi Cui, Xin Xin, Pengjie Ren',
+  },
+]
 
 // ==================== Honors and Awards 配置 ====================
 interface Honor {
@@ -81,6 +88,11 @@ interface Honor {
 }
 
 const honors: Honor[] = [
+  {
+    date: '2026.4',
+    title: 'Champion',
+    description: 'Huawei CodeCraft Preliminary Competition (Jiangshan Site)',
+  },
   {
     date: '2025.11',
     title: 'Silver Medal',
@@ -94,8 +106,13 @@ const honors: Honor[] = [
   {
     date: '2025.10',
     title: 'Sliver Medal',
-    description: '中国计算机学会大学生计算机系统与程序设计竞赛',
+    description: 'CCF Collegiate Computer Systems & Programming Contest (CCSP)',
   },
+  {
+    date: '2025.5',
+    title: 'Gold Medal',
+    description: 'Shandong Provincial Collegiate Programming Contest',
+  }
 ]
 
 // ==================== Education 配置 ====================
@@ -124,11 +141,6 @@ interface Internship {
 }
 
 const internships: Internship[] = [
-  {
-    period: '2025.12 - Present',
-    position: 'Research Assistant',
-    company: 'HKUST Peilab',
-  },
   {
     period: '2024.9 - Present',
     position: 'Research Assistant',
