@@ -80,11 +80,87 @@ const publications: Publication[] = [
   },
 ]
 
+// ==================== Projects 配置 ====================
+interface Project {
+  name: string
+  url: string
+  description?: string
+  language?: string
+  stars?: string // "owner/repo"，用于 shields.io star 徽章
+}
+
+const projects: Project[] = [
+  {
+    name: 'sdu-touying-simpl',
+    url: 'https://github.com/Dregen-Yor/sdu-touying-simpl',
+    description: '基于 touying 库，参考 SDU-Beamer、diatypst、touying-pres-ustc 等模板制作而成的演示模板',
+    language: 'Typst',
+    stars: 'Dregen-Yor/sdu-touying-simpl',
+  },
+  {
+    name: 'raspi-car',
+    url: 'https://github.com/Dregen-Yor/raspi-car',
+    description: '树莓派小车',
+    language: 'C',
+    stars: 'Dregen-Yor/raspi-car',
+  },
+  {
+    name: 'SDU-QD-Electricity-Query-Script',
+    url: 'https://github.com/Dregen-Yor/SDU-QD-Electricity-Query-Script',
+    description: '山东大学青岛校区更新山大V卡通2.0后的全新宿舍电量查询脚本',
+    language: 'Python',
+    stars: 'Dregen-Yor/SDU-QD-Electricity-Query-Script',
+  },
+  {
+    name: 'RecLoop',
+    url: 'https://github.com/Dregen-Yor/RecLoop',
+    description:
+      'Official code for "Do Generative Recommenders Deepen the Information Cocoon? A Closed-Loop Simulation with LLM-Powered Agents"',
+    language: 'Python',
+    stars: 'Dregen-Yor/RecLoop',
+  },
+  {
+    name: 'blog',
+    url: 'https://github.com/Dregen-Yor/blog',
+    description: 'Personal blog built with Nuxt 4, Vue, Nuxt Content, and Tailwind CSS',
+    language: 'Vue',
+    stars: 'Dregen-Yor/blog',
+  },
+  {
+    name: 'competitive-programming-library',
+    url: 'https://github.com/Dregen-Yor/competitive-programming-library',
+    description: '📚 A modern and efficient C++ library for ICPC and competitive programming',
+    language: 'C++',
+    stars: 'Dregen-Yor/competitive-programming-library',
+  },
+]
+
+// 主要语言颜色（GitHub 语言色，用于卡片语言圆点）
+const languageColors: Record<string, string> = {
+  Typst: '#239dad',
+  C: '#555555',
+  Python: '#3572a5',
+  Vue: '#41b883',
+  'C++': '#f34b7d',
+}
+
+function langColor(lang?: string): string {
+  return (lang && languageColors[lang]) || '#8b949e'
+}
+
 // ==================== Honors and Awards 配置 ====================
 interface Honor {
   date: string
   title: string
   description?: string
+  org?: 'ICPC' | 'Huawei' | 'CCF'
+}
+
+// 奖项组织官方 logo 路径（用于条目后的图标）
+const orgLogos: Record<NonNullable<Honor['org']>, string> = {
+  ICPC: '/logos/icpc.png',
+  Huawei: '/logos/huawei.svg',
+  CCF: '/logos/ccf.png',
 }
 
 const honors: Honor[] = [
@@ -92,27 +168,31 @@ const honors: Honor[] = [
     date: '2026.4',
     title: 'Champion',
     description: 'Huawei CodeCraft Preliminary Competition (Jiangshan Site)',
+    org: 'Huawei',
   },
   {
     date: '2025.11',
     title: 'Silver Medal',
     description: 'International Collegiate Programming Contest (ICPC) Regional Contest (Nanjing)',
+    org: 'ICPC',
   },
   {
     date: '2025.11',
     title: 'Silver Medal',
     description: 'International Collegiate Programming Contest (ICPC) Regional Contest (Wuhan)',
+    org: 'ICPC',
   },
   {
     date: '2025.10',
     title: 'Sliver Medal',
     description: 'CCF Collegiate Computer Systems & Programming Contest (CCSP)',
+    org: 'CCF',
   },
   {
     date: '2025.5',
     title: 'Gold Medal',
     description: 'Shandong Provincial Collegiate Programming Contest',
-  }
+  },
 ]
 
 // ==================== Education 配置 ====================
@@ -138,13 +218,15 @@ interface Internship {
   period: string
   position: string
   company: string
+  supervisor?: string
 }
 
 const internships: Internship[] = [
   {
     period: '2024.9 - Present',
     position: 'Research Assistant',
-    company: 'Shandong University IR Lab',
+    company: 'Shandong University GAI Lab (General Artificial Intelligence Lab)',
+    supervisor: 'Xin Xin',
   },
 ]
 
@@ -172,7 +254,7 @@ defineOgImageComponent('About', {
 
 <template>
   <div class="academic-page py-5">
-    <div class="page-container px-6 container max-w-5xl mx-auto">
+    <div class="page-container px-6 container max-w-6xl mx-auto">
       <!-- 左侧个人信息栏 -->
       <aside class="sidebar">
         <div class="profile-box">
@@ -252,12 +334,22 @@ defineOgImageComponent('About', {
                 <p class="paper-content text-gray-800 dark:text-gray-200">
                   [{{ index + 1 }}]
                   <strong>
-                    <a :href="paper.url" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">{{
-                      paper.title
-                    }}</a>
+                    <a
+                      :href="paper.url"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-blue-600 dark:text-blue-400 hover:underline"
+                      >{{ paper.title }}</a
+                    >
                     - {{ paper.venue }}
                   </strong>
-                  <a v-if="paper.githubRepo" :href="paper.githubRepo" target="_blank" rel="noopener noreferrer" class="paper-badge">
+                  <a
+                    v-if="paper.githubRepo"
+                    :href="paper.githubRepo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="paper-badge"
+                  >
                     <img :src="`https://img.shields.io/github/stars/${paper.githubStars}?style=social`" alt="GitHub stars" />
                   </a>
                 </p>
@@ -277,8 +369,43 @@ defineOgImageComponent('About', {
                 <em class="text-gray-600 dark:text-gray-400">{{ honor.date }}</em>
                 <strong>{{ honor.title }}</strong
                 >{{ honor.description ? `, ${honor.description}` : '' }}
+                <span v-if="honor.org" class="honor-org">
+                  <img :src="orgLogos[honor.org]" :alt="honor.org" loading="lazy" />
+                </span>
               </li>
             </ul>
+          </section>
+
+          <!-- Projects 区域 -->
+          <section v-if="projects.length > 0" id="projects" class="content-section">
+            <h2 class="section-title text-gray-900 dark:text-gray-100"><span class="section-icon">🚀</span> Projects</h2>
+
+            <div class="project-grid grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <a
+                v-for="(project, index) in projects"
+                :key="index"
+                :href="project.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="project-card"
+              >
+                <div class="project-card-header">
+                  <span class="project-name">{{ project.name }}</span>
+                  <img
+                    v-if="project.stars"
+                    :src="`https://img.shields.io/github/stars/${project.stars}?style=social`"
+                    :alt="`${project.name} stars`"
+                    loading="lazy"
+                    class="project-stars"
+                  />
+                </div>
+                <p v-if="project.description" class="project-desc">{{ project.description }}</p>
+                <div v-if="project.language" class="project-meta">
+                  <span class="lang-dot" :style="{ backgroundColor: langColor(project.language) }" />
+                  <span class="project-lang">{{ project.language }}</span>
+                </div>
+              </a>
+            </div>
           </section>
 
           <!-- Education 区域 -->
@@ -301,7 +428,8 @@ defineOgImageComponent('About', {
             <ul class="info-list">
               <li v-for="(intern, index) in internships" :key="index" class="text-gray-800 dark:text-gray-200">
                 <em class="text-gray-600 dark:text-gray-400">{{ intern.period }}</em
-                >, {{ intern.position }}, {{ intern.company }}.
+                >, {{ intern.position }}, {{ intern.company
+                }}{{ intern.supervisor ? `. (Supervised by ${intern.supervisor})` : '' }}
               </li>
             </ul>
           </section>
@@ -455,10 +583,6 @@ html.dark .author-motto {
   min-width: 0;
 }
 
-.page-article {
-  max-width: 800px;
-}
-
 /* 内容区块 */
 .content-section {
   margin-bottom: 32px;
@@ -515,6 +639,93 @@ html.dark .author-motto {
   font-size: 0.95rem;
 }
 
+/* ========== 项目卡片样式 ========== */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 18px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s,
+    transform 0.2s;
+}
+
+html.dark .project-card {
+  border-color: #374151;
+}
+
+.project-card:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+html.dark .project-card:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.project-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.project-name {
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: #2563eb;
+  word-break: break-word;
+}
+
+html.dark .project-name {
+  color: #60a5fa;
+}
+
+.project-stars {
+  flex-shrink: 0;
+}
+
+.project-desc {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #4b5563;
+  flex: 1;
+}
+
+html.dark .project-desc {
+  color: #9ca3af;
+}
+
+.project-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.lang-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.project-lang {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+html.dark .project-lang {
+  color: #9ca3af;
+}
+
 /* ========== 信息列表样式 ========== */
 .info-list {
   list-style: none;
@@ -531,6 +742,30 @@ html.dark .author-motto {
 .info-list li em {
   font-style: normal;
   margin-right: 8px;
+}
+
+/* 奖项组织 logo 徽章 */
+.honor-org {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+  padding: 3px 4px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  vertical-align: middle;
+}
+
+html.dark .honor-org {
+  background: #f4f4f5;
+  border-color: #52525b;
+}
+
+.honor-org img {
+  height: 16px;
+  width: auto;
+  display: block;
 }
 
 /* ========== 响应式设计 ========== */

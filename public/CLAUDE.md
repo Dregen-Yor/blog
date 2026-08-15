@@ -46,6 +46,9 @@
 - `public/zsh/onefetch.png`：zsh 文章正文图片。
 - `public/not-found.jpg`：`app/pages/blogs/index.vue` 的缺省/空状态图片引用，已确认存在。
 - `public/favicon.ico`：RSS feed favicon 引用，已确认存在。
+- `public/logos/icpc.png`：ICPC 官方 logo（取自 icpc.global 官网 `/icpc-logo.png`，横向 "ICPC" 字标 + 蓝地球标记，透明底），`about.vue` Honors 条目徽章。
+- `public/logos/huawei.svg`：华为官方标识（simple-icons 红标），`about.vue` Honors 条目徽章。
+- `public/logos/ccf.png`：CCF（中国计算机学会）官方单一图像标识，`about.vue` Honors 条目徽章。
 
 # Testing and Quality
 
@@ -89,5 +92,6 @@
 
 # Change Log (Changelog)
 
+- 2026-08-15: 新增 `public/logos/`，存放 Honors 条目使用的 ICPC 官方 logo（取自 icpc.global） / 华为 / CCF 官方标识（`icpc.png`、`huawei.svg`、`ccf.png`），由 `app/pages/about.vue` 引用。
 - 2026-05-02T16:50:53: 基于 `content/blogs`、页面引用与目录枚举补充 `public` 资产路径索引和静态资源质量风险；未读取二进制内容。
 - 2026-05-02T16:37:48: 初始化 `public` 模块 AI 上下文，记录静态资源职责和资产完整性缺口。
