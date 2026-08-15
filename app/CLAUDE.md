@@ -113,6 +113,7 @@
 
 # Change Log (Changelog)
 
+- 2026-08-15: `about.vue` 社交链接新增小红书（Xiaohongshu）；为此安装 `@iconify-json/simple-icons` 图标集合，使用 `simple-icons:xiaohongshu`。
 - 2026-08-15: `about.vue` Honors 分区上移到 Projects 之前，并在每条奖项后追加官方 logo 徽章（ICPC/Huawei/CCF，浅色底板适配暗色模式，资源见 `public/logos/`）；`Internship.company` 更新为 GAI Lab 全称并新增 `supervisor` 字段。
 - 2026-08-15: `about.vue` 新增 Projects 分区（🚀），以静态配置展示 GitHub 仓库（名称、描述、语言、shields.io star 徽章）；采用两列卡片网格布局（`.project-card` + 语言色圆点），并将页面容器从 `max-w-5xl` 放宽至 `max-w-6xl`、移除 `.page-article` 的 800px 宽度上限。
 - 2026-05-02T16:50:53: 增量深挖 `app/pages`、`app/components` 与 `app/composables`，补充页面职责、组件清单、组合式函数和质量风险。

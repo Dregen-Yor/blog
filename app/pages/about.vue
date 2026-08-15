@@ -39,6 +39,12 @@ const socialLinks: SocialLink[] = [
     icon: 'fa:graduation-cap',
     external: true,
   },
+  {
+    name: 'Xiaohongshu',
+    url: 'https://www.xiaohongshu.com/user/profile/60a355160000000001009e0a',
+    icon: 'simple-icons:xiaohongshu',
+    external: true,
+  },
   // {
   //   name: 'LinkedIn',
   //   url: 'https://www.linkedin.com/in/yourusername',
